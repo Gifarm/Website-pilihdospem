@@ -117,12 +117,12 @@
                         <label for="password" class="text-xs font-bold uppercase tracking-wider text-slate-500">
                             Kata Sandi
                         </label>
-                        @if (Route::has('password.request'))
+                        {{-- @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}"
                                 class="text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors">
                                 Lupa Password?
                             </a>
-                        @endif
+                        @endif --}}
                     </div>
                     <div class="relative group">
                         <div

@@ -35,16 +35,22 @@ class MahasiswaController extends Controller
     {
         $dosen = Dosen::find($request->dosen_id);
 
-        // 🔥 VALIDASI KUOTA
+        // VALIDASI KUOTA
         if ($dosen->isFull()) {
             return back()->with('error', 'Dosen sudah penuh!');
         }
 
-        // 🔥 VALIDASI NIM
-        if (Pengajuan::where('nim', $request->nim)->exists()) {
-            return back()->with('error', 'NIM sudah pernah mendaftar!');
+        // 🚫 SUDAH DITERIMA (GLOBAL BLOCK)
+        if (Pengajuan::where('nim', $request->nim)->where('status', 'disetujui')->exists()) {
+            return back()->with('error', 'Pengajuan kamu sudah disetujui, tidak bisa mendaftar lagi.');
         }
 
+        // 🚫 MASIH PENDING
+        if (Pengajuan::where('nim', $request->nim)->where('status', 'pending')->exists()) {
+            return back()->with('error', 'Kamu sudah mengajukan, silakan tunggu proses.');
+        }
+
+        // ✅ BOLEH (ditolak atau belum ada)
         Pengajuan::create([
             'nama_mahasiswa' => $request->nama_mahasiswa,
             'nim' => $request->nim,

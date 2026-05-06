@@ -82,13 +82,13 @@
                     <p class="text-sm text-slate-500 font-medium mt-1">Berikut adalah ringkasan aktivitas sistem hari
                         ini.</p>
                 </div>
-                <div class="flex gap-2">
+                {{-- <div class="flex gap-2">
                     <button
                         class="flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all">
                         <span data-lucide="download-cloud" class="w-4 h-4"></span>
                         Export PDF
                     </button>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Stats Grid -->
